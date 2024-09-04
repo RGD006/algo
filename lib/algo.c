@@ -38,20 +38,13 @@ size_t binary_search_char(const char* arr, const size_t size, const char find_el
     return size;
 }
 
-size_t binary_search_string(char** arr, const size_t size, char* find_element)
+size_t binary_search_my_string_t(my_string_t* arr, const size_t size, my_string_t* find_element)
 {
     int32_t mid, start = 0, end = size - 1;
-
-    for ( ; start <= end; ) {
-        mid = (start + end) / 2;
-        if (strcmp(arr[mid], find_element) == 0) {
-            return mid;
-        } else if (arr[mid] < find_element) {
-            start = mid + 1;
-        } else {
-            end = mid - 1;
-        }
+    
+    for ( ; start <= end ; ) {
+        if (get_size_my_string_t(&arr[mid]) == get_size_my_string_t(find_element)) {
+            
+        }   
     }
-
-    return size;
 }
