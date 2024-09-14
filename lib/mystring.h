@@ -2,6 +2,7 @@
 #define MYSTRING_H
 
 #include <stdint.h>
+#include <stddef.h>
 
 typedef enum {
     SIZE_STRING_BIGGER,
