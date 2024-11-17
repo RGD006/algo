@@ -2,26 +2,53 @@
 #include <stdlib.h>
 #include <string.h>
 #include "algo.h"
+#include "vector.h"
 
 #define ARRAY_SIZE_INT32 100
 #define ARRAY_SIZE_STRING 10
 
+typedef struct {
+    uint8_t a;
+    uint8_t b;
+} a_t;
+
 int main()
 {
-    my_string_t arr[ARRAY_SIZE_STRING];
+    vec_t vec;
 
-    arr[0] = init_string_t("1", 1);
-    arr[1] = init_string_t("1", 1);
-    arr[2] = init_string_t("1", 1);
-    arr[3] = init_string_t("24", 2);
-    arr[4] = init_string_t("23", 2);
-    arr[5] = init_string_t("25", 2);
-    arr[6] = init_string_t("26", 2);
-    arr[7] = init_string_t("333", 3);
-    arr[8] = init_string_t("367", 3);
-    arr[9] = init_string_t("6326", 4);
+    vec_init(&vec, 4, sizeof(a_t));
 
-    printf("finded element: %d\n", binary_search_my_string_t(arr, ARRAY_SIZE_STRING, init_string_t("23", 2)));
+    a_t c = { .a=20, .b=30 };
+
+    vec_push_element(&vec, (a_t*)&c);
+
+    for (uint8_t i = 0; i < vec_get_size(&vec); i++) {
+        printf("%.5f ", vec_get_element(&vec, i));
+    }
+
+    printf("\n");
+
+
+    for (uint8_t i = 0; i < vec_get_size(&vec); i++) {
+        printf("%.5f ", vec_get_element(&vec, i));
+    }
+
+    printf("\n");
+
+    for (uint8_t i = 0; i < vec_get_size(&vec); i++) {
+        printf("%.5f ", vec_get_element(&vec, i));
+    }
+
+    vec_clear(&vec);
+
+    printf("\n");
+
+
+    for (uint8_t i = 0; i < vec_get_size(&vec); i++) {
+        printf("%.5f ", vec_get_element(&vec, i));
+    }
+
+    printf("\nno seg fault\n");
 
     return 0; 
 }

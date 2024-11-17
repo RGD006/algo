@@ -21,7 +21,7 @@ typedef struct linked_list
 
 node_t* init_node(const int32_t value, node_t* next, node_t* prev)
 {
-    node_t* tmp = malloc(sizeof(tmp));
+    node_t* tmp = (node_t*)malloc(sizeof(tmp));
 
     tmp->next = next;
     tmp->prev = prev;
@@ -39,7 +39,7 @@ void free_node(node_t* node)
 
 linked_list_t* init_linked_list(node_t* head, node_t* tail) 
 {
-    linked_list_t* tmp = malloc(sizeof(linked_list_t));
+    linked_list_t* tmp = (linked_list_t*)malloc(sizeof(linked_list_t));
 
     tmp->head = head;
     tmp->tail = tail;

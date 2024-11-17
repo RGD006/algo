@@ -3,4 +3,4 @@ project(algo)
 
 include_directories(lib)
 
-add_executable(algo main.c lib/algo.c lib/mystring.c)
+add_executable(algo main.c lib/algo.c lib/mystring.c lib/vector.c)
