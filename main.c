@@ -1,54 +1,44 @@
 #include <stdio.h>
+#include <linked_list.h>
 #include <stdlib.h>
-#include <string.h>
-#include "algo.h"
-#include "vector.h"
 
-#define ARRAY_SIZE_INT32 100
-#define ARRAY_SIZE_STRING 10
+int main() {
+  linked_list_t *list = malloc(sizeof(linked_list_t));
+  node_t *node_1 = init_node((void*)1, NULL, NULL);
+  node_t *node_2 = init_node((void*)2, NULL, NULL);
+  node_t *node_3 = init_node((void*)3, NULL, NULL);
+  node_t *node_4 = init_node((void*)4, NULL, NULL);
+  node_t *node_5 = init_node((void*)5, NULL, NULL);
 
-typedef struct {
-    uint8_t a;
-    uint8_t b;
-} a_t;
+  add_node_front_list(list, node_1);
+  add_node_front_list(list, node_2);
+  add_node_front_list(list, node_3);
+  add_node_front_list(list, node_4);
+  add_node_front_list(list, node_5);
 
-int main()
-{
-    vec_t vec;
+  for (node_t *step = list->head; step != NULL; step = step->next) {
+    printf("%d -> ", (int32_t*)step->value);
+  }
 
-    vec_init(&vec, 4, sizeof(a_t));
+  printf("\n");
 
-    a_t c = { .a=20, .b=30 };
+  delete_node_from_list(list, node_1);
 
-    vec_push_element(&vec, (a_t*)&c);
+  for (node_t *step = list->head; step != NULL; step = step->next) {
+    printf("%d -> ", (int32_t*)step->value);
+  }
 
-    for (uint8_t i = 0; i < vec_get_size(&vec); i++) {
-        printf("%.5f ", vec_get_element(&vec, i));
-    }
+  printf("\n");
 
-    printf("\n");
+  delete_node_from_list(list, node_3);
 
+  for (node_t *step = list->head; step != NULL; step = step->next) {
+    printf("%d -> ", (int32_t*)step->value);
+  }
 
-    for (uint8_t i = 0; i < vec_get_size(&vec); i++) {
-        printf("%.5f ", vec_get_element(&vec, i));
-    }
+  printf("\n");
+  
+  free(list);
 
-    printf("\n");
-
-    for (uint8_t i = 0; i < vec_get_size(&vec); i++) {
-        printf("%.5f ", vec_get_element(&vec, i));
-    }
-
-    vec_clear(&vec);
-
-    printf("\n");
-
-
-    for (uint8_t i = 0; i < vec_get_size(&vec); i++) {
-        printf("%.5f ", vec_get_element(&vec, i));
-    }
-
-    printf("\nno seg fault\n");
-
-    return 0; 
+  return 0;
 }
